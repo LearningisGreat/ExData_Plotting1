@@ -23,15 +23,7 @@ df1$Global_active_power <- as.numeric(df1$Global_active_power)
 
 png(filename = "plot4.png")
 
-par(mfrow = c(2,2))
-
-hist(
-  df1$Global_active_power,
-  col = "red",
-  main = "Global Active Power",
-  ylab = "Frequency",
-  xlab = "Global Active Power (kilowatts)"
-)
+par(mfrow = c(2,2), cex = 0.4)
 
 plot(
   df1$DateTime,
@@ -39,6 +31,13 @@ plot(
   type = "l",
   xlab = "",
   ylab = "Global Active Power (kilowatts)"
+)
+
+plot(df1$DateTime,
+     df1$Voltage,
+     type = "l",
+     xlab = "datetime",
+     ylab = "Voltage"
 )
 
 plot(
@@ -61,8 +60,7 @@ legend(
   legend = names(df1)[grep(names(df1), pattern = "Sub_met")],
   col = c("black", "red", "blue"),
   lty = 1,
-  cex = 0.6,
-  pt.cex = 1.6
+  cex = 1.5
 )
 
 plot(
